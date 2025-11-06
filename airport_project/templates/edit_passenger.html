@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Edit Passenger{% endblock %}
+{% block content %}
+<h2>Edit Passenger {{ passenger.Username }}</h2>
+<form method="POST" style="max-width:600px;" class="row g-3">
+  <div class="col-md-6">
+    <label class="form-label">First Name</label>
+    <input type="text" name="FirstName" value="{{ passenger.FirstName }}" class="form-control" required>
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Last Name</label>
+    <input type="text" name="LastName" value="{{ passenger.LastName }}" class="form-control" required>
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Contact Number</label>
+    <input type="text" name="ContactNumber" value="{{ passenger.ContactNumber }}" class="form-control" required>
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Email</label>
+    <input type="email" name="Email" value="{{ passenger.Email }}" class="form-control" required>
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Aadhar Number</label>
+    <input type="text" name="AadharNumber" value="{{ passenger.AadharNumber }}" class="form-control" required>
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Passport Number</label>
+    <input type="text" name="PassportNumber" value="{{ passenger.PassportNumber }}" class="form-control" required>
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Date of Birth</label>
+    <input type="date" name="DateOfBirth" value="{{ passenger.DateOfBirth }}" class="form-control" required>
+  </div>
+  <div class="col-md-6">
+    <label class="form-label">Gender</label>
+    <select class="form-select" name="Gender" required>
+      <option {% if passenger.Gender == 'Male' %}selected{% endif %}>Male</option>
+      <option {% if passenger.Gender == 'Female' %}selected{% endif %}>Female</option>
+      <option {% if passenger.Gender == 'Other' %}selected{% endif %}>Other</option>
+    </select>
+  </div>
+  <div class="col-12">
+    <label class="form-label">Nationality</label>
+    <input type="text" name="Nationality" value="{{ passenger.Nationality }}" class="form-control" required>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Update Passenger</button>
+    <a href="{{ url_for('manage_passengers') }}" class="btn btn-secondary">Cancel</a>
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Manage Passengers{% endblock %}
+{% block content %}
+<h2 class="mb-4">Manage Passengers</h2>
+<table class="table table-hover table-bordered">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Name</th>
+      <th>Contact</th>
+      <th>Email</th>
+      <th>Aadhar</th>
+      <th>Passport</th>
+      <th>DOB</th>
+      <th>Gender</th>
+      <th>Nationality</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in passengers %}
+      <tr>
+        <td>{{ p.Username }}</td>
+        <td>{{ p.FirstName }} {{ p.LastName }}</td>
+        <td>{{ p.ContactNumber }}</td>
+        <td>{{ p.Email }}</td>
+        <td>{{ p.AadharNumber }}</td>
+        <td>{{ p.PassportNumber }}</td>
+        <td>{{ p.DateOfBirth }}</td>
+        <td>{{ p.Gender }}</td>
+        <td>{{ p.Nationality }}</td>
+        <td>
+          <a href="{{ url_for('edit_passenger', passenger_id=p.PassengerID) }}" class="btn btn-sm btn-primary">Edit</a>
+          <a href="{{ url_for('delete_passenger', passenger_id=p.PassengerID) }}" class="btn btn-sm btn-danger" onclick="return confirm('Delete this passenger?');">Delete</a>
+        </td>
+      </tr>
+    {% else %}
+      <tr><td colspan="10" class="text-center">No passengers found</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

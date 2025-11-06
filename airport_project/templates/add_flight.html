@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Add Flight{% endblock %}
+{% block content %}
+<h2 class="mb-4">Add New Flight</h2>
+<form method="POST" class="row g-3" style="max-width:600px;">
+  <div class="col-md-6">
+    <label for="FlightNumber" class="form-label">Flight Number</label>
+    <input type="text" class="form-control" name="FlightNumber" required>
+  </div>
+  <div class="col-md-6">
+    <label for="DepartureAirportID" class="form-label">Departure Airport</label>
+    <select class="form-select" name="DepartureAirportID" required>
+      <option value="" disabled selected>Select airport</option>
+      {% for ap in airports %}
+        <option value="{{ ap.AirportID }}">{{ ap.AirportName }} ({{ ap.AirportCode }})</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-md-6">
+    <label for="ArrivalAirportID" class="form-label">Arrival Airport</label>
+    <select class="form-select" name="ArrivalAirportID" required>
+      <option value="" disabled selected>Select airport</option>
+      {% for ap in airports %}
+        <option value="{{ ap.AirportID }}">{{ ap.AirportName }} ({{ ap.AirportCode }})</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-md-6">
+    <label for="AirlineID" class="form-label">Airline</label>
+    <select class="form-select" name="AirlineID" required>
+      <option value="" disabled selected>Select airline</option>
+      {% for al in airlines %}
+        <option value="{{ al.AirlineID }}">{{ al.AirlineName }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div class="col-md-6">
+    <label for="DepartureTime" class="form-label">Departure Time</label>
+    <input type="datetime-local" class="form-control" name="DepartureTime" required>
+  </div>
+  <div class="col-md-6">
+    <label for="ArrivalTime" class="form-label">Arrival Time</label>
+    <input type="datetime-local" class="form-control" name="ArrivalTime" required>
+  </div>
+  <div class="col-md-6">
+    <label for="Status" class="form-label">Status</label>
+    <select class="form-select" name="Status" required>
+      <option>Scheduled</option>
+      <option>Boarding</option>
+      <option>Departed</option>
+      <option>Delayed</option>
+      <option>Arrived</option>
+      <option>Cancelled</option>
+    </select>
+  </div>
+  <div class="col-md-6">
+    <label for="BasePrice" class="form-label">Base Price</label>
+    <input type="number" min="1000" step="any" class="form-control" name="BasePrice" required>
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary">Add Flight</button>
+    <a href="{{ url_for('manage_flights') }}" class="btn btn-secondary">Cancel</a>
+  </div>
+</form>
+{% endblock %}

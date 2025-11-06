@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+{% block content %}
+<h2 class="mb-4">Admin Dashboard</h2>
+<div class="d-flex mb-3 flex-wrap gap-2">
+  <a href="{{ url_for('manage_flights') }}" class="btn btn-outline-primary">Manage Flights</a>
+  <a href="{{ url_for('manage_passengers') }}" class="btn btn-outline-primary">Manage Passengers</a>
+  <a href="{{ url_for('manage_employees') }}" class="btn btn-outline-primary">Manage Employees</a>
+  <a href="{{ url_for('manage_baggage') }}" class="btn btn-outline-primary">Manage Baggage</a>
+</div>
+<p>Use the links above to navigate different management features.</p>
+{% endblock %}

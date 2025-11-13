@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Gate Assignment Report{% endblock %}
+{% block content %}
+<h2>Gate Assignment</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Terminal</th>
+      <th>Gate</th>
+      <th>Gate Status</th>
+      <th>Flight Number</th>
+      <th>Airline</th>
+      <th>Departure Time</th>
+      <th>Flight Status</th>
+      <th>Aircraft Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for g in gates %}
+      <tr>
+        <td>{{ g.TerminalName }}</td>
+        <td>{{ g.GateNumber }}</td>
+        <td>{{ g.GateStatus }}</td>
+        <td>{{ g.FlightNumber or "-" }}</td>
+        <td>{{ g.AirlineName or "-" }}</td>
+        <td>{{ g.DepartureTime or "-" }}</td>
+        <td>{{ g.FlightStatus or "-" }}</td>
+        <td>{{ g.AircraftType or "-" }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Airline Performance Report{% endblock %}
+{% block content %}
+<h2>Airline Performance</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Airline</th>
+      <th>Total Flights</th>
+      <th>Total Bookings</th>
+      <th>Total Revenue</th>
+      <th>Avg. Ticket Price</th>
+      <th>Delayed Flights</th>
+      <th>Delay %</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for a in performance %}
+      <tr>
+        <td>{{ a.AirlineName }}</td>
+        <td>{{ a.TotalFlights }}</td>
+        <td>{{ a.TotalBookings }}</td>
+        <td>{{ a.TotalRevenue }}</td>
+        <td>{{ a.AvgTicketPrice }}</td>
+        <td>{{ a.DelayedFlights }}</td>
+        <td>{{ a.DelayPercentage }}%</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
